@@ -52,12 +52,6 @@ export default class Inicio extends Component {
 
     return (
         <View>
-            {/* <TouchableOpacity style={styles.boton3} onPress={correo}>
-                    <View style={styles.btnAcceder}>
-                        <Text style={styles.txtRegistrado}> Acceder </Text>
-                    </View>
-            </TouchableOpacity> */}
-
             <Image
             style={styles.imagen1}
             source = {require("./Imagenes/cucei.png")}

@@ -55,7 +55,7 @@ export default class Tab4 extends Component {
                 >
                     <TouchableOpacity onPress={this.toggleOpen} style={styles.body}>
                         <Image
-                        source={require("./Imagenes/icono-menu.png")}
+                        // source={require("./Imagenes/icono-menu.png")}
                         style={{width: 50, height: 50,}}
                         />
                     </TouchableOpacity>
