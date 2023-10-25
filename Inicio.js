@@ -13,67 +13,67 @@ export default class Inicio extends Component {
   }
   render() {
     const ir_a_insc = () =>{
-        this.props.navigation.navigate('Inscripcion')
+        this.props.navigation.navigate('Registro')
     }
     
     const clickFacebook = () => {
         console.log("Le diste click al boton de facebook")
     }
-
     const cierraModal = () => {
-        this.props.navigation.navigate("Menu", {nombre:"Mario Pascual"});
-        this.setState({modalVentana:false});
+        // this.setState({modalVentana:false});
         _this = this;
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                // Typical action to be performed when the document is ready:
-                console.log(xhttp.responseText);
-            }
-            if(xhttp.responseText === "3"){
-                Alert.alert("Correo desconocido, Registrate");
-            }else{
-                if(xhttp.responseText === "0"){
-                    Alert.alert("Password malo, instenta de nuevo");
-                }else{
-                    _this.props.navigation.navigate("Menu", {nombre:xhttp.responseText});
+                if(xhttp.responseText === "3"){
+                    Alert.alert("Cuenta no registrada");
+                }else if(xhttp.responseText === "0"){
+                    Alert.alert("Contraseña incorrecta")
+                }else if(!xhttp.responseText){
                     _this.setState({modalVentana:false});
+                    _this.props.navigation.navigate("Menu", {nombre:xhttp.responseText});
                 }
             }
         };
-        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/verifica.php?correo="+this.state.correo+"&password="+this.state.password, true);
+        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/verifica.php?correo="+_this.state.correo+"&password="+_this.state.password, true);
         xhttp.send();
+        // this.setState({correo: ""});
+        this.setState({password: ""});
     }
 
     const correo = () => {
         this.setState({modalVentana:true})
     }
+    const correont = () => {
+        this.setState({modalVentana:false})
+        this.setState({correo: ""});
+        this.setState({password: ""});
+    }
 
     return (
-        <View style={styles.fondo}>
-            <TouchableOpacity style={styles.boton3} onPress={correo}>
+        <View>
+            {/* <TouchableOpacity style={styles.boton3} onPress={correo}>
                     <View style={styles.btnAcceder}>
                         <Text style={styles.txtRegistrado}> Acceder </Text>
                     </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <Image
             style={styles.imagen1}
-            source = {require("./Imagenes/Constructor.jpg")}
+            source = {require("./Imagenes/cucei.png")}
             />
-
-            <View style={styles.login}>
-                <Text style={styles.textohandyman}> Welcome to Handyman </Text>
+            <View style={styles.inicio}>
+                <Text style={styles.textoMatch}>Match CUCEI</Text>
                 
                 <TouchableOpacity style={styles.boton1} onPress={ir_a_insc}>
                     <View style={styles.btnmail}>
-                        <Text style={styles.txtEmail}> Sign in with Email </Text>
+                        <Text style={styles.txtEmail}> Registrarse </Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.boton2} onPress={clickFacebook}>
+                <TouchableOpacity style={styles.boton2} onPress={correo}>
                     <View style={styles.btnfacebook}>
-                        <Text style={styles.txtFacebook}> Sign in Facebook </Text>
+                        <Text style={styles.txtFacebook}> Iniciar sesión </Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -83,48 +83,24 @@ export default class Inicio extends Component {
             visible={this.state.modalVentana}
             animationType="slide">
 
-                <View style={{
-                    borderWidth: 2,
-                    width: 300,
-                    height: 250,
-                    marginLeft: 40,
-                    marginTop: 280,
-                    backgroundColor: "#83c5be",
-                    borderColor: "#83c5be",
-                    borderRadius: 40,
-                }}>
+                <View style={styles.login}>
 
-                    <Text style={{
-                        marginTop: 8,
-                        fontSize: 25,
-                        marginLeft: 20,
-                    }}> Correo: </Text>
-                    <TextInput onChangeText={(correo) => this.setState({correo})}>
+                    <Text style={styles.label}> Correo: </Text>
+                    <TextInput value={this.state.correo} style={styles.input} onChangeText={(correo) => this.setState({correo: correo})}>
                     </TextInput>
                     
-                    <Text style={{
-                        fontSize: 25,
-                        marginLeft: 20,
-                    }}> Password: </Text>
-                    <TextInput onChangeText={(password) => this.setState({password})}>
+                    <Text style={styles.label}> Contraseña: </Text>
+                    <TextInput value={this.state.password} style={styles.input} secureTextEntry={true} onChangeText={(password) => this.setState({password: password})}>
                     </TextInput>
                     
-                    <TouchableOpacity style={{
-                            width: 200,
-                            height: 45,
-                            marginLeft: 50,
-                            borderRadius: 40,
-                            backgroundColor: "#006d77",
-                            borderColor: "#006d77",
-                            borderRadius: 40,
-                        }} onPress={cierraModal}>
-                        <Text style={{
-                            marginTop: 10,
-                            fontSize: 20,
-                            textAlign: "center",
-                            color: "white",
-                        }}> Aceptar </Text>
+                    <TouchableOpacity style={styles.btnAceptar} onPress={cierraModal}>
+                        <Text style={styles.textAceptar}> Aceptar </Text>
                     </TouchableOpacity>
+
+                    <TouchableOpacity style={styles.btnX} onPress={correont}>
+                        <Text style={styles.textAceptar}> X </Text>
+                    </TouchableOpacity>
+
                 </View>
             </Modal>
         </View>
@@ -198,41 +174,83 @@ const styles = StyleSheet.create({
         borderRadius: 60,
     },
 
-    btnAcceder:{
-        width: 80,
-        height: 30,
-        borderColor: "#006d77",
-        backgroundColor: "#006d77",
-        marginLeft: 135,
+    btnAceptar:{
+        marginTop: 20,
+        marginLeft: 20,
+        width: 295,
+        height: 50,
+        backgroundColor: "#2b67be",
+        borderRadius: 60,
     },
 
-    textohandyman:{
-        fontSize: 25,
-        marginLeft: 10,
+    textAceptar:{
+        marginTop: 8,
+        fontSize: 20,
+        color: "white",
+        textAlign: 'center',
+    },
+
+    btnX:{
+        marginTop: 20,
+        marginLeft: 140,
+        width: 50,
+        height: 50,
+        backgroundColor: "#ec6b33",
+        borderRadius: 100,
+    },
+
+    textoMatch:{
+        fontSize: 40,
+        marginLeft: 70,
+        marginRight: 70,
         marginTop: 10,
         textAlign: "center",
         fontWeight: "bold",
-    },
-
-    fondo:{
-        with: 400, //Ancho
-        height: 900, //Largo
-        backgroundColor: "white",
+        borderRadius: 6,
+        color: "white",
     },
 
     imagen1:{
-        width: 350,
-        height: 490, 
+        width: 385,
+        height: 800,
+        position: 'absolute'
+    },
+
+    inicio:{
+        width: 338,
+        height: 345,
+        marginTop: 200,
+        marginLeft: 22,
+        gap: 30,
+        backgroundColor: 'rgba(52,77,117,0.5)',
+        borderRadius: 50,
+    },
+
+    label:{
+        marginTop: 25,
+        fontSize: 20,
+        marginLeft: 15,
+        color: "white",
+    },
+
+    input:{
+        marginLeft: 20,
+        marginRight: 20,
         marginTop: 10,
+        marginBottom: 10,
+        backgroundColor: "white",
+        borderRadius: 5,
+        color: "black",
+        height: 40,
+        fontSize: 15,
     },
 
     login:{
         width: 338,
-        height: 230,
-        borderWidth: 2,
-        marginLeft: 10,
-        borderColor: "#fb8500",
-        backgroundColor: "#fb8500",
-        borderRadius: 30,
+        height: 345,
+        marginTop: 200,
+        marginLeft: 22,
+        backgroundColor: '#042966',
+        borderRadius: 50,
     }
 })

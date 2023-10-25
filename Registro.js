@@ -51,7 +51,7 @@ export default class Inscripcion extends Component {
             fontSize: 50,
             textAlign: "center",
             marginTop: 50,
-        }}> Inscripción </Text>
+        }}> Registro </Text>
 
         <TouchableOpacity style={{
             borderWidth: 2,

@@ -3,6 +3,8 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TAB1 from "./Tab1"
 import TAB2 from "./Tab2"
+import TAB3 from "./Tab3"
+import TAB4 from "./Tab4"
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export default class Menu extends Component {
@@ -20,21 +22,56 @@ export default class Menu extends Component {
                 tabBarActiveTintColor: 'blue',
             }}
             >
-                <Tab.Screen name="Lista de constructores" component={TAB1} initialParams={{nombre: this.props.route.params.nombre}}
+                <Tab.Screen name="Recomendaciones" component={TAB1} initialParams={{nombre: this.props.route.params.nombre}}
                 options={{
-                    tabBarLabel: 'Constructores',
-                    tabBarIcon: ({ color, size }) => (
-                      <Icon name="body-outline" color={"red"} size={30} />
+                    tabBarLabel: 'Recomendaciones',
+                    tabBarIcon: ({ focused }) => (
+                        <Icon
+                          name={focused ? 'people' : 'people-outline'}
+                          size={30}
+                          color="#3069be"
+                        />
+                    ),
+                }}
+                />
+
+                <Tab.Screen name="Solicitudes" component={TAB2}
+                options={{
+                    tabBarLabel: 'Solicitudes',
+                    tabBarIcon: ({ focused }) => (
+                        <Icon
+                          name={focused ? 'mail' : 'mail-outline'}
+                          size={30}
+                          color="#3069be"
+                        />
+                    ),
+
+                }}
+                />
+                
+                <Tab.Screen name="Agenda" component={TAB3}
+                options={{
+                    tabBarLabel: 'Agenda',
+                    tabBarIcon: ({ focused }) => (
+                        <Icon
+                          name={focused ? 'calendar' : 'calendar-outline'}
+                          size={30}
+                          color="#3069be"
+                        />
                     ),
 
                 }}
                 />
 
-                <Tab.Screen name="Reproductor de videos" component={TAB2}
+                <Tab.Screen name="Perfil" component={TAB4}
                 options={{
-                    tabBarLabel: 'Informacion',
-                    tabBarIcon: ({ color, size }) => (
-                      <Icon name="newspaper-outline" color={"red"} size={30} />
+                    tabBarLabel: 'Perfil',
+                    tabBarIcon: ({ focused }) => (
+                        <Icon
+                          name={focused ? 'person' : 'person-outline'}
+                          size={30}
+                          color="#3069be"
+                        />
                     ),
 
                 }}
