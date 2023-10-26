@@ -1,91 +1,89 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
 import MenuDrawer from 'react-native-side-drawer';
 
 export default class Tab4 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            open: false,
             dataSource: [],
         };
     }
-
-    toggleOpen = () => {
-        this.setState({ open: !this.state.open });
-    };
-
-    componentDidMount(){
-        var xhttp = new XMLHttpRequest();
-        _this=this;
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                // Typical action to be performed when the document is ready:
-                console.log(xhttp.responseText);
-                var Temporal = JSON.parse(xhttp.responseText);
-                _this.setState({dataSource:Temporal})
-            }
-        };
-        xhttp.open("GET", "https://cuceimobile.space/datos.json", true);
-        xhttp.send();
-    }
     
-    drawerContent = () => {
-    return (
-        <View style={styles.animatedBox}>
-            {/* <Text style={{color:"black", marginTop: 40,}}>  Bienvenido: {this.props.route.params.nombre} </Text> */}
-            <TouchableOpacity onPress={this.toggleOpen}>
-                <Text> Cerrar pestaña </Text>
-            </TouchableOpacity>
-        </View>
-        );
-    };
 
     render() {
+        const imagenes = ["https://i.pravatar.cc/300", "https://i.pravatar.cc/301", "https://i.pravatar.cc/302","https://i.pravatar.cc/303","https://i.pravatar.cc/304"]
+        const preferencias = ["Anime","Rock Latino","Harry Potter","Minecraft","Anime","Rock Latino","Harry Potter","Minecraft"]
+        const horario = [
+            {
+                "id": "0",
+                "dia": "Lunes",
+                "hora_inicio": "14:00",
+                "hora_fin": "15:00",
+            },
+            {
+                "id": "0",
+                "dia": "Martes",
+                "hora_inicio": "14:00",
+                "hora_fin": "15:00",
+            },
+            {
+                "id": "0",
+                "dia": "Miercoles",
+                "hora_inicio": "14:00",
+                "hora_fin": "15:00",
+            },
+            {
+                "id": "0",
+                "dia": "Jueves",
+                "hora_inicio": "14:00",
+                "hora_fin": "15:00",
+            }
+        ]
         return (          
             <View style={styles.container}>
-                <MenuDrawer
-                open={this.state.open}
-                position={'left'}
-                drawerContent={this.drawerContent()}
-                drawerPercentage={45}
-                animationTime={250}
-                overlay={true}
-                opacity={0.4}
-                >
-                    <TouchableOpacity onPress={this.toggleOpen} style={styles.body}>
-                        <Image
-                        // source={require("./Imagenes/icono-menu.png")}
-                        style={{width: 50, height: 50,}}
-                        />
-                    </TouchableOpacity>
-                </MenuDrawer>
-                
-                <View>
-                    <Text style={{color:"blue", fontSize: 30}}> Trabajadores </Text>
-                    <FlatList
-                        style={{marginTop: 10,}}
-                        data={this.state.dataSource}
-                        renderItem={({item}) => 
-                        <View style={{width: 500, height:180}}>
-                            <Text style={{color: "black"}}> {item.Nombre} </Text>
-                            <Text style={{color: "black"}}> {item.Profesion} </Text>
-                            <Text style={{color: "black"}}> {item.Telefono} </Text>
-                            <Image
-                            source={{uri:item.Imagen}}
-                            style={{width: 100, height: 100}}
-                            />
-                            <View style={{
-                                width: 360,
-                                height: 6,
-                                backgroundColor: "gray",
-                                marginTop: 10,
-                            }}></View>
-                        </View>
-                        }
-                        keyExtractor={item => item.id}
+                <ScrollView contentContainerStyle={{justifyContent: 'center',width:384}}>
+                <Image
+                    source={{uri: "https://i.pravatar.cc/300"}}
+                    style={styles.ventanaPerfilImagen}
                     />
-                </View>
+                    <View style={styles.ventanaPerfilinformacion}>
+                        <Text style={styles.campo}>Nombre: <Text style={styles.campoText}>Pablo Alejandro</Text></Text>
+                        <Text style={styles.campo}>Edad: <Text style={styles.campoText}>18</Text></Text>
+                        <Text style={styles.campo}>Carrera: <Text style={styles.campoText}>Ingeniería Informática</Text></Text>
+                    </View>
+                    <FlatList
+                    data={imagenes}
+                    horizontal={true}
+                    showsHorizontalScrollIndicator={false}
+                    keyExtractor={(item)=>item}
+                    renderItem={({item})=>{
+                        return(
+                            <Image source={{uri: item}} style={styles.imagenes}/> 
+                        );
+                    }}
+                    />
+                    <Text style={styles.titulo}>Preferencias</Text>
+                    <View style={styles.app}>
+                        {preferencias.map((item) => {
+                            return (
+                                <View style={styles.item}>
+                                    <Text style={{color:"white", fontSize:10}}>{item}</Text>
+                                </View>
+                            );
+                        })}
+                    </View>
+                    <Text style={styles.titulo}>Horario</Text>
+                    <View style={styles.horarioApp}>
+                        {horario.map((item) => {
+                            return (
+                                <View style={styles.horarioItem}>
+                                    <Text style={{color:"white", fontSize:10}}>{item.dia}: {item.hora_inicio}-{item.hora_fin}</Text>
+                                </View>
+                            );
+                        })}
+                    </View>
+                </ScrollView>
             </View>
         );
     }
@@ -97,24 +95,84 @@ const styles = StyleSheet.create({
       backgroundColor: "#fff",
       alignItems: "center",
       justifyContent: "center",
-      marginTop: 30,
       zIndex: 0,
     },
-    animatedBox: {
-      flex: 1,
-      backgroundColor: "#38C8EC",
-      padding: 10,
+    ventanaPerfilImagen: {
+        width: 140,
+        height: 140,
+        borderRadius: 100,
+        borderWidth: 1,
+        marginHorizontal: 120,
+        marginTop: 10,
+        marginBottom: 10,
     },
-    body: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 50,
-      height: 50,
-      marginLeft: 300,
+    ventanaPerfilinformacion: {
+        gap: 20,
+        marginVertical: 20,
+        marginHorizontal: 80,
     },
-    tabla: {
-        backgroundColor: "gray",
-        with: 40,
+    campo: {
+        color: '#3069be',
+    },
+    campoText: {
+        color: 'black',
+    },
+    titulo: {
+        fontSize: 15,
+        color: 'black',
+        // marginRight: 10,
+        textAlign: 'center'
+    },
+    imagenes: {
+        width: 120,
+        height: 120,
+        borderWidth: 1,
+        borderColor: "#3069be",
+    },
+    app: {
+        marginLeft: 30,
+        marginHorizontal: "auto",
+        width: 399,
+        flexDirection: "row",
+        flexWrap: "wrap"
+      },
+      item: {
+        flex: 1,
+        minWidth: 80,
+        maxWidth: 80,
         height: 50,
-    }
+        justifyContent: "center",
+        alignItems: "center",
+    
+        // my visual styles; not important for grid
+        padding: 10,
+        backgroundColor: "#3069be",
+        borderWidth: 1.5,
+        borderColor: "white",
+        borderRadius: 5,
+
+      },
+      horarioApp: {
+        marginLeft: 30,
+        marginHorizontal: "auto",
+        width: 356,
+        flexDirection: "row",
+        flexWrap: "wrap"
+      },
+      horarioItem: {
+        flex: 1,
+        minWidth: 161,
+        maxWidth: 150,
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+    
+        // my visual styles; not important for grid
+        padding: 10,
+        backgroundColor: "#3069be",
+        borderWidth: 1.5,
+        borderColor: "white",
+        borderRadius: 5,
+
+      }
   })

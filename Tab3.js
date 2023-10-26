@@ -44,48 +44,7 @@ export default class Tab3 extends Component {
     render() {
         return (          
             <View style={styles.container}>
-                <MenuDrawer
-                open={this.state.open}
-                position={'left'}
-                drawerContent={this.drawerContent()}
-                drawerPercentage={45}
-                animationTime={250}
-                overlay={true}
-                opacity={0.4}
-                >
-                    <TouchableOpacity onPress={this.toggleOpen} style={styles.body}>
-                        <Image
-                        // source={require("./Imagenes/icono-menu.png")}
-                        style={{width: 50, height: 50,}}
-                        />
-                    </TouchableOpacity>
-                </MenuDrawer>
-                
-                <View>
-                    <Text style={{color:"blue", fontSize: 30}}> Trabajadores </Text>
-                    <FlatList
-                        style={{marginTop: 10,}}
-                        data={this.state.dataSource}
-                        renderItem={({item}) => 
-                        <View style={{width: 500, height:180}}>
-                            <Text style={{color: "black"}}> {item.Nombre} </Text>
-                            <Text style={{color: "black"}}> {item.Profesion} </Text>
-                            <Text style={{color: "black"}}> {item.Telefono} </Text>
-                            <Image
-                            source={{uri:item.Imagen}}
-                            style={{width: 100, height: 100}}
-                            />
-                            <View style={{
-                                width: 360,
-                                height: 6,
-                                backgroundColor: "gray",
-                                marginTop: 10,
-                            }}></View>
-                        </View>
-                        }
-                        keyExtractor={item => item.id}
-                    />
-                </View>
+               
             </View>
         );
     }

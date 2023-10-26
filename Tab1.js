@@ -150,23 +150,6 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       zIndex: 0,
     },
-    animatedBox: {
-      flex: 1,
-      backgroundColor: "#38C8EC",
-      padding: 10,
-    },
-    body: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 50,
-      height: 50,
-      marginLeft: 300,
-    },
-    tabla: {
-        backgroundColor: "gray",
-        with: 40,
-        height: 50,
-    },
     perfil: {
         display: 'flex',
         flexDirection: 'row',
@@ -259,18 +242,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: "#ec6b33"
     },
-    // preferencias: {
-    //     display: 'flex',
-    //     flexDirection: 'row',
-    //     gap: 5,
-    // },
-    // tag: {
-    //     backgroundColor: "#3069be",
-    //     color: "white",
-    //     padding: 5,
-    //     borderRadius: 2,
-    //     textAlign: 'center'
-    // },
     app: {
         marginLeft: 7,
         marginHorizontal: "auto",
