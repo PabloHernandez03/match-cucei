@@ -33,7 +33,6 @@ export default class Tab3 extends Component {
     drawerContent = () => {
     return (
         <View style={styles.animatedBox}>
-            {/* <Text style={{color:"black", marginTop: 40,}}>  Bienvenido: {this.props.route.params.nombre} </Text> */}
             <TouchableOpacity onPress={this.toggleOpen}>
                 <Text> Cerrar pestaña </Text>
             </TouchableOpacity>
