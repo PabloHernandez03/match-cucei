@@ -248,21 +248,21 @@ const styles = StyleSheet.create({
         width: 399,
         flexDirection: "row",
         flexWrap: "wrap"
-      },
-      item: {
-        flex: 1,
-        minWidth: 80,
-        maxWidth: 80,
-        height: 50,
-        justifyContent: "center",
-        alignItems: "center",
-    
-        // my visual styles; not important for grid
-        padding: 10,
-        backgroundColor: "#ec6b33",
-        borderWidth: 1.5,
-        borderColor: "white",
-        borderRadius: 5,
+    },
+    item: {
+    flex: 1,
+    minWidth: 80,
+    maxWidth: 80,
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
 
-      }
+    // my visual styles; not important for grid
+    padding: 10,
+    backgroundColor: "#ec6b33",
+    borderWidth: 1.5,
+    borderColor: "white",
+    borderRadius: 5,
+
+    }
   })

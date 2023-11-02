@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, Modal, TextInput, Alert } from 'react-native';
+import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
 export default class Inicio extends Component {
   constructor(props) {
@@ -16,9 +17,6 @@ export default class Inicio extends Component {
         this.props.navigation.navigate('Registro')
     }
     
-    const clickFacebook = () => {
-        console.log("Le diste click al boton de facebook")
-    }
     const cierraModal = () => {
         // this.setState({modalVentana:false});
         _this = this;
@@ -105,54 +103,47 @@ export default class Inicio extends Component {
 //Declaración de estilos
 const styles = StyleSheet.create({
     txtRegistrado:{
-        fontSize: 15,
-        marginTop: 5,
+        fontSize: moderateScale(15),
+        marginTop: verticalScale(5),
         textAlign: "center",
         color: "white",
     },
     
     txtEmail:{
-        fontSize: 20,
-        marginLeft: 10,
-        marginTop: 10,
+        fontSize: moderateScale(20),
+        marginLeft: horizontalScale(10),
+        marginTop: verticalScale(10),
         textAlign: "center",
         color: "white",
     },
 
     txtFacebook:{
-        fontSize: 20,
-        marginLeft: 10,
-        marginTop: 10,
+        fontSize: moderateScale(20),
+        marginLeft: horizontalScale(10),
+        marginTop: verticalScale(10),
         textAlign: "center",
         color: "black",
     },
     
     //Para presionar la pantalla
     boton1:{
-        width: 295,
-        height: 55,
-        marginLeft: 20,
-        marginTop: 10,
+        width: horizontalScale(295),
+        height: verticalScale(55),
+        marginLeft: horizontalScale(20),
+        marginTop: horizontalScale(10),
     },
 
     boton2:{
-        width: 295,
-        height: 55,
-        marginLeft: 20,
-        marginTop: 20,
-    },
-
-    boton3:{
-        width: 80,
-        height: 30,
-        marginLeft: 135,
-        marginTop: 5,
+        width: horizontalScale(295),
+        height: verticalScale(55),
+        marginLeft: horizontalScale(20),
+        marginBottom: horizontalScale(20),
     },
 
     //La forma de los botones
     btnmail:{
-        width: 295,
-        height: 55,
+        width: horizontalScale(295),
+        height: verticalScale(55),
         borderColor: "#001f54",
         backgroundColor: "#001f54",
         borderWidth: 2,
@@ -160,8 +151,8 @@ const styles = StyleSheet.create({
     },
 
     btnfacebook:{
-        width: 295,
-        height: 55,
+        width: horizontalScale(295),
+        height: verticalScale(55),
         borderColor: "white",
         backgroundColor: "white",
         borderWidth: 2,
@@ -169,34 +160,34 @@ const styles = StyleSheet.create({
     },
 
     btnAceptar:{
-        marginTop: 20,
-        marginLeft: 20,
-        width: 295,
-        height: 50,
+        marginTop: verticalScale(20),
+        marginLeft: horizontalScale(20),
+        width: horizontalScale(295),
+        height: verticalScale(50),
         backgroundColor: "#2b67be",
         borderRadius: 60,
     },
 
     textAceptar:{
-        marginTop: 8,
-        fontSize: 20,
+        marginTop: verticalScale(8),
+        fontSize: moderateScale(20),
         color: "white",
         textAlign: 'center',
     },
 
     btnX:{
-        marginTop: 20,
-        marginLeft: 140,
-        width: 50,
-        height: 50,
+        marginTop: verticalScale(20),
+        marginLeft: horizontalScale(140),
+        width: horizontalScale(50),
+        height: verticalScale(50),
         backgroundColor: "#ec6b33",
         borderRadius: 100,
     },
 
     textoMatch:{
-        fontSize: 40,
-        marginLeft: 70,
-        marginRight: 70,
+        fontSize: moderateScale(40),
+        marginLeft: horizontalScale(70),
+        marginRight: horizontalScale(70),
         marginTop: 10,
         textAlign: "center",
         fontWeight: "bold",
@@ -205,45 +196,45 @@ const styles = StyleSheet.create({
     },
 
     imagen1:{
-        width: 385,
-        height: 800,
+        width: horizontalScale(384),
+        height: verticalScale(781),
         position: 'absolute'
     },
 
     inicio:{
-        width: 338,
-        height: 345,
-        marginTop: 200,
-        marginLeft: 22,
-        gap: 30,
+        // width: 338,
+        // height: 345,
+        marginVertical: verticalScale(200),
+        marginHorizontal: horizontalScale(20),
+        gap: moderateScale(30),
         backgroundColor: 'rgba(52,77,117,0.5)',
         borderRadius: 50,
     },
 
     label:{
-        marginTop: 25,
-        fontSize: 20,
-        marginLeft: 15,
+        marginTop: verticalScale(25),
+        fontSize: moderateScale(20),
+        marginLeft: horizontalScale(15),
         color: "white",
     },
 
     input:{
-        marginLeft: 20,
-        marginRight: 20,
-        marginTop: 10,
-        marginBottom: 10,
+        marginLeft: horizontalScale(20),
+        marginRight: horizontalScale(20),
+        marginTop: verticalScale(10),
+        marginBottom: verticalScale(10),
         backgroundColor: "white",
         borderRadius: 5,
         color: "black",
-        height: 40,
-        fontSize: 15,
+        height: verticalScale(40),
+        fontSize: moderateScale(15),
     },
 
     login:{
-        width: 338,
-        height: 345,
-        marginTop: 200,
-        marginLeft: 22,
+        width: horizontalScale(338),
+        height: verticalScale(345),
+        marginTop: verticalScale(200),
+        marginLeft: horizontalScale(22),
         backgroundColor: '#042966',
         borderRadius: 50,
     }
