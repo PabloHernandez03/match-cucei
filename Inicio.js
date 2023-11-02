@@ -161,11 +161,12 @@ const styles = StyleSheet.create({
 
     btnAceptar:{
         marginTop: verticalScale(20),
+        marginBottom: verticalScale(30),
         marginLeft: horizontalScale(20),
         width: horizontalScale(295),
         height: verticalScale(50),
         backgroundColor: "#3926b9",
-        borderColor: "#271a81",
+        borderColor: "#042966",
         borderWidth: 3,
         borderRadius: 60,
     },
@@ -178,7 +179,8 @@ const styles = StyleSheet.create({
     },
 
     btnX:{
-        marginTop: verticalScale(20),
+        position: "absolute",
+        marginTop: verticalScale(310),
         marginLeft: horizontalScale(140),
         width: horizontalScale(50),
         height: verticalScale(50),
@@ -239,10 +241,8 @@ const styles = StyleSheet.create({
     },
 
     login:{
-        width: horizontalScale(338),
-        height: verticalScale(345),
-        marginTop: verticalScale(200),
-        marginLeft: horizontalScale(22),
+        marginVertical: verticalScale(200),
+        marginHorizontal: horizontalScale(20),
         backgroundColor: '#042966',
         borderRadius: 50,
     }
