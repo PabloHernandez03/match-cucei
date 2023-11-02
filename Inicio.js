@@ -29,7 +29,7 @@ export default class Inicio extends Component {
                     Alert.alert("Contraseña incorrecta")
                 }else if(!xhttp.responseText){
                     _this.setState({modalVentana:false});
-                    _this.props.navigation.navigate("Menu", {nombre:xhttp.responseText});
+                    _this.props.navigation.navigate("Menu", {correo: _this.state.correo,password: _this.state.password});
                 }
             }
         };
@@ -86,7 +86,7 @@ export default class Inicio extends Component {
                     </TextInput>
                     
                     <TouchableOpacity style={styles.btnAceptar} onPress={cierraModal}>
-                        <Text style={styles.textAceptar}> Aceptar </Text>
+                        <Text style={styles.textAceptar}>Ingresar</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={styles.btnX} onPress={correont}>
@@ -164,12 +164,14 @@ const styles = StyleSheet.create({
         marginLeft: horizontalScale(20),
         width: horizontalScale(295),
         height: verticalScale(50),
-        backgroundColor: "#2b67be",
+        backgroundColor: "#3926b9",
+        borderColor: "#271a81",
+        borderWidth: 3,
         borderRadius: 60,
     },
 
     textAceptar:{
-        marginTop: verticalScale(8),
+        marginTop: verticalScale(7),
         fontSize: moderateScale(20),
         color: "white",
         textAlign: 'center',
@@ -180,7 +182,7 @@ const styles = StyleSheet.create({
         marginLeft: horizontalScale(140),
         width: horizontalScale(50),
         height: verticalScale(50),
-        backgroundColor: "#ec6b33",
+        backgroundColor: "#97063d",
         borderRadius: 100,
     },
 
@@ -223,11 +225,17 @@ const styles = StyleSheet.create({
         marginRight: horizontalScale(20),
         marginTop: verticalScale(10),
         marginBottom: verticalScale(10),
-        backgroundColor: "white",
         borderRadius: 5,
-        color: "black",
         height: verticalScale(40),
         fontSize: moderateScale(15),
+        
+        backgroundColor: "#1d3e75",
+        borderBottomColor: "gray",
+        borderBottomWidth: 1.5,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        color: "#b2bbcb"
     },
 
     login:{

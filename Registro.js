@@ -12,6 +12,7 @@ export default class Inscripcion extends Component {
         password: "",
         apellido: "",
         nacimiento: new Date(),
+        carrera: "",
         gustos: [
                 {"tipo": "Música","chosen":false},
                 {"tipo": "Videojuegos", "chosen":false},
@@ -42,27 +43,15 @@ export default class Inscripcion extends Component {
         //Luego entra a esta función
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                // Typical action to be performed when the document is ready:
-                //Para sacar lo que dice la web "xhttp.responseText"
-                //console.log(xhttp.responseText);
-                if(_this.state.nombre==="" || _this.state.apellido==="" || _this.state.correo==="" || _this.state.password===""){
-                    _this.setState({mensajeError: "Llena todos los campos"});
-                    _this.setState({alertaError: true});
-                }else if(_this.state.contGustos < 3){
-                    _this.setState({mensajeError: "Escoge por lo menos 3 gustos"});
-                    _this.setState({alertaError: true});
+                if(xhttp.responseText === "1"){
+                    //Para mostrar un mensaje en la app
+                    _this.setState({alertaRegistro: true});
                 }else{
-                    if(xhttp.responseText === "1"){
-                        //Para mostrar un mensaje en la app
-                        _this.setState({alertaRegistro: true});
-                        console.log("hola")
-                    }else{
-                        Alert.alert("Error X~X");
-                    }
-                }
-                
+                    Alert.alert("Error X~X");
+                } 
             }
         };
+        
         //Gustos
         var _gustos = [];
         _this.state.gustos.map((item)=>{
@@ -71,11 +60,22 @@ export default class Inscripcion extends Component {
             }
         });
         var _nacimiento = _this.state.nacimiento.getFullYear()+"-"+(_this.state.nacimiento.getMonth()+1)+"-"+_this.state.nacimiento.getDate();
-        console.log(_nacimiento);
         // xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido, true);
-        xhttp.open("GET", "https://holandes-volador3-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido+"&gustos="+JSON.stringify(_gustos)+"&nacimiento="+_nacimiento, true);
-        xhttp.send();
-        console.log("https://holandes-volador3-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido+"&gustos="+JSON.stringify(_gustos)+"&nacimiento="+_nacimiento);
+        if(_this.state.nombre==="" || _this.state.apellido==="" || _this.state.correo==="" || _this.state.password==="" || _this.state.carrera===""){
+            _this.setState({mensajeError: "Llena todos los campos"});
+            _this.setState({alertaError: true});
+        }else if(_this.state.contGustos < 3){
+            _this.setState({mensajeError: "Escoge por lo menos 3 gustos"});
+            _this.setState({alertaError: true});
+        }else{
+            xhttp.open("GET", "https://holandes-volador3-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido+"&gustos="+JSON.stringify(_gustos)+"&nacimiento="+_nacimiento, true+"&carrera");
+            xhttp.send();
+        }
+        
+    }
+
+    const ir_a_menu = ()=>{
+        this.props.navigation.navigate('Menu');
     }
 
     const agregarGusto = (item)=>{
@@ -132,6 +132,8 @@ export default class Inscripcion extends Component {
         <TextInput value={this.state.nombre} style={styles.barra} onChangeText={(nombre) => this.setState({nombre: nombre})} />
         <Text style={styles.requisito}> Apellidos: </Text>
         <TextInput value={this.state.apellido} style={styles.barra} onChangeText={(apellido) => this.setState({apellido: apellido})} />
+        <Text style={styles.requisito}> Carrera: </Text>
+        <TextInput value={this.state.apellido} style={styles.barra} onChangeText={(carrera) => this.setState({carrera: carrera})} />
         <Text style={styles.requisito}> Fecha de nacimiento: </Text>
         <TouchableOpacity style={styles.barra} onPress={setDate}>
             <Text style={{height: verticalScale(40),marginTop: verticalScale(10),marginLeft: horizontalScale(5)}}>{this.state.nacimiento.getDate()}/{this.state.nacimiento.getMonth()+1}/{this.state.nacimiento.getFullYear()}</Text>
@@ -197,6 +199,7 @@ export default class Inscripcion extends Component {
                 confirmButtonColor="#DD6B55"
                 onConfirmPressed={() => {
                     this.setState({alertaRegistro: false})
+                    ir_a_menu();
                   }}
             />
             <AwesomeAlert
@@ -208,7 +211,7 @@ export default class Inscripcion extends Component {
                 showConfirmButton={true}
                 confirmButtonColor="#DD6B55"
                 onConfirmPressed={() => {
-                    this.setState({alertaError: false})
+                    this.setState({alertaError: false});
                   }}
             />
       

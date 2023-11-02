@@ -22,7 +22,7 @@ export default class Menu extends Component {
                 tabBarActiveTintColor: 'blue',
             }}
             >
-                <Tab.Screen name="Recomendaciones" component={TAB1} initialParams={{nombre: this.props.route.params.nombre}}
+                <Tab.Screen name="Recomendaciones" component={TAB1}
                 options={{
                     tabBarLabel: 'Recomendaciones',
                     tabBarIcon: ({ focused }) => (
