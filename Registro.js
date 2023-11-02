@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { View, Text, TouchableOpacity, Modal, Image, Button, TextInput, Alert, StyleSheet, ScrollView} from 'react-native';
 import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 import AwesomeAlert from 'react-native-awesome-alerts';
+import { DateTimePickerAndroid }  from '@react-native-community/datetimepicker';
 export default class Inscripcion extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +11,7 @@ export default class Inscripcion extends Component {
         correo: "",
         password: "",
         apellido: "",
+        nacimiento: new Date(),
         gustos: [
                 {"tipo": "Música","chosen":false},
                 {"tipo": "Videojuegos", "chosen":false},
@@ -34,7 +36,6 @@ export default class Inscripcion extends Component {
   }
 
   render() {
-
     const enviarRegistro = () => {
         var xhttp = new XMLHttpRequest();
         _this = this;
@@ -62,9 +63,19 @@ export default class Inscripcion extends Component {
                 
             }
         };
-        //Primero hace esto
-        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido, true);
+        //Gustos
+        var _gustos = [];
+        _this.state.gustos.map((item)=>{
+            if(item.chosen){
+                _gustos.push(item.tipo);
+            }
+        });
+        var _nacimiento = _this.state.nacimiento.getFullYear()+"-"+(_this.state.nacimiento.getMonth()+1)+"-"+_this.state.nacimiento.getDate();
+        console.log(_nacimiento);
+        // xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido, true);
+        xhttp.open("GET", "https://holandes-volador3-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido+"&gustos="+JSON.stringify(_gustos)+"&nacimiento="+_nacimiento, true);
         xhttp.send();
+        console.log("https://holandes-volador3-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido+"&gustos="+JSON.stringify(_gustos)+"&nacimiento="+_nacimiento);
     }
 
     const agregarGusto = (item)=>{
@@ -83,6 +94,20 @@ export default class Inscripcion extends Component {
       });
       this.setState({gustos: _gustos});
       this.setState({contGustos: _contGustos});
+  }
+
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate;
+    this.setState({nacimiento: currentDate});
+  };
+
+  const setDate = ()=>{
+    DateTimePickerAndroid.open({
+        value: this.state.nacimiento,
+        onChange,
+        mode: "date",
+        is24Hour: true,
+      });
   }
 
     // const seguir_registro = () => {
@@ -107,6 +132,10 @@ export default class Inscripcion extends Component {
         <TextInput value={this.state.nombre} style={styles.barra} onChangeText={(nombre) => this.setState({nombre: nombre})} />
         <Text style={styles.requisito}> Apellidos: </Text>
         <TextInput value={this.state.apellido} style={styles.barra} onChangeText={(apellido) => this.setState({apellido: apellido})} />
+        <Text style={styles.requisito}> Fecha de nacimiento: </Text>
+        <TouchableOpacity style={styles.barra} onPress={setDate}>
+            <Text style={{height: verticalScale(40),marginTop: verticalScale(10),marginLeft: horizontalScale(5)}}>{this.state.nacimiento.getDate()}/{this.state.nacimiento.getMonth()+1}/{this.state.nacimiento.getFullYear()}</Text>
+        </TouchableOpacity>
         <Text style={styles.requisito}> Correo institucional: </Text>
         <TextInput value={this.state.correo} style={styles.barra} onChangeText={(correo) => this.setState({correo: correo})} />
         <Text style={styles.requisito}> Contraseña: </Text>
