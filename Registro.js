@@ -18,6 +18,26 @@ export default class Inscripcion extends Component {
   }
 
   render() {
+    const enviarRegistro = () => {
+        var xhttp = new XMLHttpRequest();
+        //Luego entra a esta función
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // Typical action to be performed when the document is ready:
+                //Para sacar lo que dice la web "xhttp.responseText"
+                //console.log(xhttp.responseText);
+                if(xhttp.responseText === "1"){
+                    //Para mostrar un mensaje en la app
+                    Alert.alert("Registro insertado :)");
+                }else{
+                    Alert.alert("Error X~X");
+                }
+            }
+        };
+        //Primero hace esto
+        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido, true);
+        xhttp.send();
+    }
 
     const agregarGusto = (item)=>{
       var _gustos = this.state.gustos
@@ -134,6 +154,24 @@ export default class Inscripcion extends Component {
 
         <TouchableOpacity style={styles.botonApagado}> 
             <Text style={styles.gustos}> Anime </Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{
+            borderWidth: 2,
+            width: 180,
+            height: 50,
+            backgroundColor: "blue",
+            borderColor: "blue",
+            fontWeight: "bold",
+            borderRadius: 40,
+            marginLeft: 90,
+            marginTop: 30,
+        }} onPress={enviarRegistro}>
+            <Text style={{
+                fontSize: 25,
+                textAlign: "center",
+                marginTop: 5,
+                color: "black",
+            }}> Agregar </Text>
         </TouchableOpacity>
       </ScrollView>
     );
