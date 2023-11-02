@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, Modal, ScrollView } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import { horizontalScale, moderateScale, verticalScale } from './Metrics';
 
 export default class Tab1 extends Component {
     constructor(props) {
@@ -73,7 +74,7 @@ export default class Tab1 extends Component {
                                     <Text style={{color: "black"}}> {item.Telefono} </Text>
                                 </View>
                             </TouchableOpacity>
-                            <View style={{marginTop: 2, marginBottom: 2, borderWidth: 1, borderColor: "gray", borderTopWidth: 0, borderRightWidth: 0, borderLeftWidth: 0,}}></View>
+                            <View style={{marginTop: verticalScale(2), marginBottom: verticalScale(2), borderWidth: 1, borderColor: "gray", borderTopWidth: 0, borderRightWidth: 0, borderLeftWidth: 0,}}></View>
                             
                         </View>
                         
@@ -153,45 +154,45 @@ const styles = StyleSheet.create({
     perfil: {
         display: 'flex',
         flexDirection: 'row',
-        gap: 15,
+        gap: moderateScale(15),
     },
     informacion: {
-        width: 270,
+        width: horizontalScale(270),
         // display: 'flex',
         // justifyContent: 'center',
         // alignItems: 'center'
     },
     imagen: {
-        width: 80,
-        height: 80,
+        width: horizontalScale(80),
+        height: verticalScale(80),
         borderRadius: 100,
         // borderColor: 'black',
         borderWidth: 1,
     },
     ventanaPerfil: {
         position: 'absolute',
-        width: 338,
-        height: 680,
-        marginTop: 50,
-        marginLeft: 22,
+        width: horizontalScale(338),
+        height: verticalScale(680),
+        marginTop: verticalScale(50),
+        marginLeft: horizontalScale(22),
         backgroundColor: 'white',
         borderRadius: 20,
         borderWidth: 2,
         borderColor: '#ec6b33',
     },
     ventanaPerfilImagen: {
-        width: 140,
-        height: 140,
+        width: horizontalScale(140),
+        height: verticalScale(140),
         borderRadius: 100,
         borderWidth: 1,
-        marginHorizontal: 100,
-        marginTop: 10,
-        marginBottom: 10,
+        marginHorizontal: horizontalScale(100),
+        marginTop: verticalScale(10),
+        marginBottom: verticalScale(10),
     },
     ventanaPerfilinformacion: {
-        gap: 20,
-        marginVertical: 20,
-        marginHorizontal: 20,
+        gap: moderateScale(20),
+        marginVertical: verticalScale(20),
+        marginHorizontal: horizontalScale(20),
     },
     campo: {
         color: '#ec6b33',
@@ -200,60 +201,60 @@ const styles = StyleSheet.create({
         color: 'black',
     },
     titulo: {
-        fontSize: 15,
+        fontSize: moderateScale(15),
         color: 'black',
-        marginHorizontal: 120
+        marginHorizontal: horizontalScale(120)
     },
     imagenes: {
-        width: 120,
-        height: 120,
+        width: horizontalScale(120),
+        height: verticalScale(120),
         borderWidth: 1,
         borderColor: "#ec6b33",
     },
     btnX:{
         position: 'absolute',
         marginTop: 0,
-        marginLeft: 295,
-        width: 40,
-        height: 40,
+        marginLeft: horizontalScale(295),
+        width: horizontalScale(40),
+        height: verticalScale(40),
     },
     btnMenu:{
         position: 'absolute',
         marginTop: 0,
-        width: 40,
-        height: 40,
-        marginLeft: 10,
+        width: horizontalScale(40),
+        height: verticalScale(40),
+        marginLeft: horizontalScale(10),
     },
     send:{
-        width: 295,
-        height: 55,
+        width: horizontalScale(295),
+        height: verticalScale(55),
         borderColor: "#ec6b33",
         backgroundColor: "white",
         borderWidth: 2,
         borderRadius: 10,
-        marginHorizontal: 18,
-        marginBottom: 10,
-        marginTop: 10,
+        marginHorizontal: horizontalScale(18),
+        marginBottom: verticalScale(10),
+        marginTop: verticalScale(10),
         // marginTop: 150
     },
     sendText: {
-        marginHorizontal: 60,
-        marginVertical: 8,
-        fontSize: 20,
+        marginHorizontal: horizontalScale(60),
+        marginVertical: verticalScale(8),
+        fontSize: moderateScale(20),
         color: "#ec6b33"
     },
     app: {
-        marginLeft: 7,
+        marginLeft: horizontalScale(7),
         marginHorizontal: "auto",
-        width: 399,
+        width: horizontalScale(399),
         flexDirection: "row",
         flexWrap: "wrap"
     },
     item: {
     flex: 1,
-    minWidth: 80,
-    maxWidth: 80,
-    height: 50,
+    minWidth: horizontalScale(80),
+    maxWidth: horizontalScale(80),
+    height: verticalScale(50),
     justifyContent: "center",
     alignItems: "center",
 
