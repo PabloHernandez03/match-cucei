@@ -27,9 +27,9 @@ export default class Inicio extends Component {
                     Alert.alert("Cuenta no registrada");
                 }else if(xhttp.responseText === "0"){
                     Alert.alert("Contraseña incorrecta")
-                }else if(!xhttp.responseText){
+                }else if(xhttp.responseText){
                     _this.setState({modalVentana:false});
-                    _this.props.navigation.navigate("Menu", {correo: _this.state.correo,password: _this.state.password});
+                    _this.props.navigation.navigate("Menu", {id: xhttp.responseText,correo: _this.state.correo,password: _this.state.password});
                 }
             }
         };

@@ -13,7 +13,7 @@ export default class Tab4 extends Component {
 
     render() {
         const imagenes = ["https://i.pravatar.cc/300", "https://i.pravatar.cc/301", "https://i.pravatar.cc/302","https://i.pravatar.cc/303","https://i.pravatar.cc/304"]
-        const preferencias = ["Anime","Rock Latino","Harry Potter","Minecraft","Anime","Rock Latino","Harry Potter","Minecraft"]
+        const preferencias = ["Anime","Rock Latino","Harry Potter","Minecraft"]
         const horario = [
             {
                 "id": "0",
@@ -22,19 +22,19 @@ export default class Tab4 extends Component {
                 "hora_fin": "15:00",
             },
             {
-                "id": "0",
+                "id": "1",
                 "dia": "Martes",
                 "hora_inicio": "14:00",
                 "hora_fin": "15:00",
             },
             {
-                "id": "0",
+                "id": "2",
                 "dia": "Miercoles",
                 "hora_inicio": "14:00",
                 "hora_fin": "15:00",
             },
             {
-                "id": "0",
+                "id": "3",
                 "dia": "Jueves",
                 "hora_inicio": "14:00",
                 "hora_fin": "15:00",

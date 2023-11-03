@@ -32,7 +32,7 @@ export default class Tab1 extends Component {
                 _this.setState({dataSource:Temporal})
             }
         };
-        xhttp.open("GET", "https://holandes-volador3-p.000webhostapp.com/Perfil.php", true);
+        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Perfil.php", true);
         xhttp.send();
         this.setState({correoPerfil: this.props.navigation.navigate("Menu", {correoPerfil: this.state.correo })})
     }
@@ -48,7 +48,7 @@ export default class Tab1 extends Component {
                 _this.setState({gustos:Temporal})
             }
         };
-        xhttp.open("GET", "https://holandes-volador3-p.000webhostapp.com/Gusto.php?id="+perfil.id, true);
+        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Gusto.php?id="+perfil.id, true);
         xhttp.send();
     }
 
