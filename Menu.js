@@ -13,16 +13,18 @@ export default class Menu extends Component {
         this.state = {
         };
     }
-
+    
     render() {
         const Tab = createBottomTabNavigator();
+        const { Id_perfil } = this.props.route.params;
+
         return (
             <Tab.Navigator
             screenOptions={{
                 tabBarActiveTintColor: 'blue',
             }}
             >
-                <Tab.Screen name="Recomendaciones" component={TAB1}
+                <Tab.Screen name="Recomendaciones" component={TAB1} initialParams={{ IdPerfil: Id_perfil }}
                 options={{
                     tabBarLabel: 'Recomendaciones',
                     tabBarIcon: ({ focused }) => (

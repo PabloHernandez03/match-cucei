@@ -29,7 +29,8 @@ export default class Inicio extends Component {
                     Alert.alert("Contraseña incorrecta")
                 }else if(xhttp.responseText){
                     _this.setState({modalVentana:false});
-                    _this.props.navigation.navigate("Menu", {id: xhttp.responseText,correo: _this.state.correo,password: _this.state.password});
+                    console.log(xhttp.responseText);
+                    _this.props.navigation.navigate("Menu", {Id_perfil: xhttp.responseText});
                 }
             }
         };

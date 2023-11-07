@@ -20,7 +20,7 @@ export default class Tab1 extends Component {
         };
     }
     
-
+    //Para obtener todos los perfiles y datos combinados para mostrar
     componentDidMount(){
         var xhttp = new XMLHttpRequest();
         _this=this;
@@ -32,11 +32,12 @@ export default class Tab1 extends Component {
                 _this.setState({dataSource:Temporal})
             }
         };
-        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Perfil.php", true);
+        xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/CuentaVerificar.php?id="+this.props.route.params.IdPerfil, true);
         xhttp.send();
-        this.setState({correoPerfil: this.props.navigation.navigate("Menu", {correoPerfil: this.state.correo })})
+        //this.setState({correoPerfil: this.props.navigation.navigate("Menu", {correoPerfil: this.state.correo })})
     }
 
+    //Se usa para obtener Los gustos de los perfiles
     getGustos(perfil){
         var xhttp = new XMLHttpRequest();
         _this=this;
@@ -49,10 +50,13 @@ export default class Tab1 extends Component {
             }
         };
         xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Gusto.php?id="+perfil.id, true);
+        //{IdPerfil}
         xhttp.send();
     }
 
     render() {
+        //Contien el Id perfil del Usuario
+        //const { IdPerfil } = this.props.route.params.IdPerfil;
         const imagenes = ["https://i.pravatar.cc/300", "https://i.pravatar.cc/301", "https://i.pravatar.cc/302","https://i.pravatar.cc/303","https://i.pravatar.cc/304"]
         const consultarPerfil = (item) => {
             this.setState({modalVentana: true});

@@ -13,6 +13,7 @@ export default class Inscripcion extends Component {
         apellido: "",
         nacimiento: new Date(),
         carrera: "",
+        Id_perfil: 0,
         gustos: [
                 {"tipo": "Música","chosen":false},
                 {"tipo": "Videojuegos", "chosen":false},
@@ -43,7 +44,8 @@ export default class Inscripcion extends Component {
         //Luego entra a esta función
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                if(xhttp.responseText === "1"){
+                //Aquí no se como hacer que la función se haga true +++++++++++++++++++++++++++++++++++++++
+                if(xhttp.responseText > 3){
                     //Para mostrar un mensaje en la app
                     _this.setState({alertaRegistro: true});
                 }else{
@@ -68,14 +70,17 @@ export default class Inscripcion extends Component {
             _this.setState({mensajeError: "Escoge por lo menos 3 gustos"});
             _this.setState({alertaError: true});
         }else{
-            xhttp.open("GET", "https://holandes-volador3-p.000webhostapp.com/Cuenta.php?nombre="+this.state.nombre+"&correo="+this.state.correo+"&password="+this.state.password+"&apellido="+this.state.apellido+"&gustos="+JSON.stringify(_gustos)+"&nacimiento="+_nacimiento, true+"&carrera");
+            xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/Cuenta.php?nombre="+_this.state.nombre+"&correo="+_this.state.correo+"&password="+_this.state.password+"&apellido="+_this.state.apellido+"&gustos="+JSON.stringify(_gustos)+"&nacimiento="+_nacimiento+"&carrera="+_this.state.carrera, true);
             xhttp.send();
+            _this.setState({Id_perfil: xhttp.responseText});
         }
         
     }
 
     const ir_a_menu = ()=>{
-        this.props.navigation.navigate('Menu');
+        console.log(this.state.Id_perfil);
+        this.props.navigation.navigate('Menu', {Id_perfil: this.state.Id_perfil});
+        //_this.props.navigation.navigate("Menu", {nombre:xhttp.responseText});
     }
 
     const agregarGusto = (item)=>{
@@ -133,7 +138,7 @@ export default class Inscripcion extends Component {
         <Text style={styles.requisito}> Apellidos: </Text>
         <TextInput value={this.state.apellido} style={styles.barra} onChangeText={(apellido) => this.setState({apellido: apellido})} />
         <Text style={styles.requisito}> Carrera: </Text>
-        <TextInput value={this.state.apellido} style={styles.barra} onChangeText={(carrera) => this.setState({carrera: carrera})} />
+        <TextInput value={this.state.carrera} style={styles.barra} onChangeText={(carrera) => this.setState({carrera: carrera})} />
         <Text style={styles.requisito}> Fecha de nacimiento: </Text>
         <TouchableOpacity style={styles.barra} onPress={setDate}>
             <Text style={{height: verticalScale(40),marginTop: verticalScale(10),marginLeft: horizontalScale(5)}}>{this.state.nacimiento.getDate()}/{this.state.nacimiento.getMonth()+1}/{this.state.nacimiento.getFullYear()}</Text>
