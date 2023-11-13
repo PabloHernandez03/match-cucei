@@ -27,8 +27,8 @@ export default class Tab2 extends Component {
                     <View style={styles.perfil}>
                         <TouchableOpacity style={styles.botonPerfil} onPress={detallesRecibida}>
                             <Image style={styles.perfilImage} source={require("./Imagenes/cucei.png")}/>
-                            <View style={{marginTop:-110,marginLeft:120}}>
-                                <Text style={{color:"White",fontSize:25}}>Jardin de Rectoria</Text>
+                            <View style={{marginTop:verticalScale(-120),marginLeft:horizontalScale(120)}}>
+                                <Text style={{color:"White",fontSize:moderateScale(25)}}>Jardin de Rectoria</Text>
                                 <Text style={{color:"red"}}>Lunes 04 de Diciembre</Text>
                                 <Text style={{color:"White"}}>14:00</Text>
                             </View>
@@ -40,7 +40,7 @@ export default class Tab2 extends Component {
                             >
                                 <ScrollView style={styles.vistaPerfil}>
                                 
-                                    <View style={{borderWidth:2,backgroundColor:"#102A68", width:350,height:750,borderRadius:40,marginLeft:20,marginTop:20, position:"relative"}}>
+                                    <View style={{borderWidth:2,backgroundColor:"#102A68", width:horizontalScale(350),height:verticalScale(750),borderRadius:40,marginLeft:horizontalScale(20),marginTop:verticalScale(20), position:"relative"}}>
                                         <Image style={styles.imagenCita} source={require("./Imagenes/cucei.png")}/>
                                         <TouchableOpacity onPress={cerrarDetallesRecibida} style={styles.btnX}>
                                         <Icon
@@ -53,34 +53,34 @@ export default class Tab2 extends Component {
                                         
                                         <View style={{alignItems:"center",}}>
                                             
-                                            <Text style={{color:"White",fontSize:40}}>Jardin de Rectoria</Text>
+                                            <Text style={{color:"White",fontSize:moderateScale(40)}}>Jardin de Rectoria</Text>
                                             <Text style={{color:"White"}}>-Enfrente de la Biblioteca-</Text>
                                         </View>
 
-                                        <View style={{marginTop:50, width:310, marginLeft:18, alignItems:"center"}}>
-                                            <Text style={{color:"White",fontSize:25}}>Angela Acebes | INCO</Text>
+                                        <View style={{marginTop:verticalScale(50), width:horizontalScale(310), marginLeft:horizontalScale(18), alignItems:"center"}}>
+                                            <Text style={{color:"White",fontSize:moderateScale(25)}}>Angela Acebes | INCO</Text>
                                             <Text style={{color:"red"}}>Lunes 04 de Diciembre</Text>
-                                            <View style={{borderColor:"black", borderWidth:1,borderColor:"red",width:250}}/>
-                                            <Text style={{color:"White",fontSize:20}}>Actividades</Text>
+                                            <View style={{borderColor:"black", borderWidth:1,borderColor:"red",width:horizontalScale(250)}}/>
+                                            <Text style={{color:"White",fontSize:moderateScale(20)}}>Actividades</Text>
                                         </View>
 
                                         <View>
                                             
                                             <View style={styles.app}>
-                                                <View style={{backgroundColor:"#2764d6", width:100, height:35, alignItems:"center"}}>
-                                                    <Text style={{fontSize:25}}>Platicar</Text>
+                                                <View style={{backgroundColor:"#2764d6", width:horizontalScale(100), height:verticalScale(35), alignItems:"center"}}>
+                                                    <Text style={{fontSize:moderateScale(25)}}>Platicar</Text>
                                                 </View>
-                                                <View style={{backgroundColor:"#2764d6", width:100, height:35, alignItems:"center", marginTop:-35,marginLeft:110,}}>
-                                                    <Text style={{fontSize:25}}>Comer</Text>
+                                                <View style={{backgroundColor:"#2764d6", width:horizontalScale(100), height:verticalScale(35), alignItems:"center", marginTop:verticalScale(-35),marginLeft:horizontalScale(110),}}>
+                                                    <Text style={{fontSize:moderateScale(25)}}>Comer</Text>
                                                 </View>
-                                                <View style={{backgroundColor:"#2764d6", width:100, height:35, alignItems:"center",marginTop:-35,marginLeft:220,}}>
-                                                    <Text style={{fontSize:25}}>Relajarse</Text>
+                                                <View style={{backgroundColor:"#2764d6", width:horizontalScale(100), height:verticalScale(35), alignItems:"center",marginTop:verticalScale(-35),marginLeft:horizontalScale(220),}}>
+                                                    <Text style={{fontSize:moderateScale(25)}}>Relajarse</Text>
                                                 </View>
                                             </View>
                                         </View>
-                                        <View style={{marginTop:100,alignItems:"center"}}>
-                                            <TouchableOpacity style={styles.rechazar}><Text style={{color:"White",fontSize:20,marginTop:5}}>Cancelar</Text></TouchableOpacity>
-                                            <Text style={{fontSize:15}}>Nota:No podras cancelar faltando 24 Hrs.</Text>
+                                        <View style={{marginTop:verticalScale(100),alignItems:"center"}}>
+                                            <TouchableOpacity style={styles.rechazar}><Text style={{color:"White",fontSize:moderateScale(20),marginTop:verticalScale(5)}}>Cancelar</Text></TouchableOpacity>
+                                            <Text style={{fontSize:moderateScale(15)}}>Nota:No podras cancelar faltando 24 Hrs.</Text>
                                         </View>
                                     </View>
                                 </ScrollView>
@@ -98,23 +98,23 @@ export default class Tab2 extends Component {
 
 const styles = StyleSheet.create({
     app:{
-        marginLeft:10,
-        marginTop:20
+        marginLeft:horizontalScale(10),
+        marginTop:verticalScale(20)
     },
 
     imagenes:{
-        width: 100,
-        height: 100,
+        width: horizontalScale(100),
+        height: verticalScale(100),
         borderWidth: 1,
         borderColor: "#193565",
-        marginRight:5,
+        marginRight:horizontalScale(5),
 
         borderRadius:20,
     },
 
     imagenCita:{
-        width:350,
-        height:200,
+        width:horizontalScale(350),
+        height:verticalScale(200),
         borderRadius:40,
     },
     
@@ -124,9 +124,9 @@ const styles = StyleSheet.create({
     },
 
     enviadasText:{
-        fontSize:25,
-        marginLeft:33,
-        marginTop:20,
+        fontSize:moderateScale(25),
+        marginLeft:horizontalScale(33),
+        marginTop:verticalScale(20),
         color:"#102A68",
     },
 
@@ -134,33 +134,33 @@ const styles = StyleSheet.create({
     },
 
     recibidasText:{
-        fontSize:25,
-        marginLeft:33,
-        marginTop:20,
+        fontSize:moderateScale(25),
+        marginLeft:horizontalScale(33),
+        marginTop:verticalScale(20),
         color:"#CFA50C",
     },
 
     perfil:{
         backgroundColor:"#102A68",
-        marginTop:30,
-        marginLeft:30,
-        width:330,
-        height:130,
+        marginTop:verticalScale(30),
+        marginLeft:horizontalScale(30),
+        width:horizontalScale(330),
+        height:verticalScale(130),
         borderRadius:20,
         
     },
     perfilImage:{
-        width:100,
-        height:100, 
+        width:horizontalScale(100),
+        height:verticalScale(100), 
         margin:15,
         borderRadius:50,
     },
 
     perfilImageDetalles:{
-        width:150,
-        height:150, 
-        marginLeft:95,
-        marginTop:20,
+        width:horizontalScale(150),
+        height:verticalScale(150), 
+        marginLeft:horizontalScale(95),
+        marginTop:verticalScale(20),
         borderRadius:110,
         borderColor:"black",
         borderWidth:2,
@@ -193,9 +193,9 @@ const styles = StyleSheet.create({
     aceptar:{
         backgroundColor:"#32529D",
         alignItems:"center",
-        width:150,
-        height:30,
-        marginLeft:15,
+        width:horizontalScale(150),
+        height:verticalScale(30),
+        marginLeft:horizontalScale(15),
         borderRadius:20,
         borderColor:"black",
         borderWidth:1,
@@ -204,9 +204,9 @@ const styles = StyleSheet.create({
     rechazar:{
         backgroundColor:"#BE1619",
         alignItems:"center",
-        width:250,
-        height:40,
-        marginTop:-30,
+        width:horizontalScale(250),
+        height:verticalScale(40),
+        marginTop:verticalScale(-30),
         borderRadius:20,
         borderColor:"black",
         borderWidth:1,

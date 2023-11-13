@@ -35,6 +35,7 @@ export default class Tab1 extends Component {
         xhttp.open("GET", "https://holandes-volador2-p.000webhostapp.com/CuentaVerificar.php?id="+this.props.route.params.IdPerfil, true);
         xhttp.send();
         //this.setState({correoPerfil: this.props.navigation.navigate("Menu", {correoPerfil: this.state.correo })})
+        // console.log(this.props.route.params.IdPerfil);
     }
 
     //Se usa para obtener Los gustos de los perfiles
@@ -89,18 +90,20 @@ export default class Tab1 extends Component {
                         renderItem={({item}) => 
                         <View>
                             <TouchableOpacity style={styles.perfil} onPress={()=>{consultarPerfil(item)}}>
+                                <View style={{display:"flex",justifyContent:"center",marginLeft:horizontalScale(15)}}>
                                 <Image
                                 source={{uri: item.foto}}
                                 style={styles.imagen}
                                 />
+                                </View>
                                 <View style={styles.informacion}>
-                                    <Text style={{color: "black"}}> {item.nombre} </Text>
-                                    <Text style={{color: "black"}}> {item.apellido} </Text>
-                                    <Text style={{color: "black"}}> {item.carrera} </Text>
-                                    <Text style={{color: "black"}}> {item.edad} años </Text>
+                                    <Text style={{color: "white"}}> {item.nombre} </Text>
+                                    <Text style={{color: "white"}}> {item.apellido} </Text>
+                                    <Text style={{color: "red"}}> {item.carrera} </Text>
+                                    <Text style={{color: "white"}}> {item.edad} años </Text>
                                 </View>
                             </TouchableOpacity>
-                            <View style={{marginTop: verticalScale(2), marginBottom: verticalScale(2), borderWidth: 1, borderColor: "gray", borderTopWidth: 0, borderRightWidth: 0, borderLeftWidth: 0,}}></View>
+                            <View style={{marginTop: verticalScale(2), marginBottom: verticalScale(2)}}></View>
                             
                         </View>
                         
@@ -135,9 +138,10 @@ export default class Tab1 extends Component {
                             <View style={styles.ventanaPerfilinformacion}>
                                 <Text style={styles.campoText}>{this.state.nombre} {this.state.apellido}</Text>
                                 <Text style={styles.campoText}>{this.state.edad} años</Text>
-                                <Text style={styles.campoText}>{this.state.carrera}</Text>
+                                <Text style={{color: 'red', textAlign: "center"}}>{this.state.carrera}</Text>
                             </View>
                             <FlatList
+                            style={{marginLeft: horizontalScale(7),marginRight: horizontalScale(7)}}
                             data={imagenes}
                             horizontal={true}
                             showsHorizontalScrollIndicator={false}
@@ -181,9 +185,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         gap: moderateScale(15),
+        backgroundColor: "#102A68",
+        borderRadius: 30,
+        marginHorizontal: horizontalScale(20),
     },
     informacion: {
         width: horizontalScale(270),
+        marginTop: verticalScale(10),
+        marginBottom: verticalScale(10),
         // display: 'flex',
         // justifyContent: 'center',
         // alignItems: 'center'
@@ -194,17 +203,19 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         // borderColor: 'black',
         borderWidth: 1,
+        backgroundColor: "white",
     },
     ventanaPerfil: {
         position: 'absolute',
         width: horizontalScale(338),
         // height: verticalScale(680),
-        marginVertical: verticalScale(100),
+        // marginVertical: verticalScale(80),
+        marginTop: verticalScale(80),
         marginLeft: horizontalScale(22),
-        backgroundColor: '#193565',
+        backgroundColor: '#102A68',
         borderRadius: 20,
         borderWidth: 2,
-        borderColor: '#001f54',
+        borderColor: 'black',
     },
     ventanaPerfilImagen: {
         width: horizontalScale(140),
@@ -231,10 +242,12 @@ const styles = StyleSheet.create({
         marginVertical: verticalScale(5)
     },
     imagenes: {
-        width: horizontalScale(120),
-        height: verticalScale(120),
+        width: horizontalScale(100),
+        height: verticalScale(100),
         borderWidth: 1,
         borderColor: "#193565",
+        borderRadius: 20,
+        marginRight:horizontalScale(5),
     },
     btnX:{
         position: 'absolute',

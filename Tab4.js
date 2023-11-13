@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList, ScrollView } from 'react-native';
 import MenuDrawer from 'react-native-side-drawer';
+import { horizontalScale, moderateScale } from './Metrics';
 
 export default class Tab4 extends Component {
     constructor(props) {
@@ -48,11 +49,12 @@ export default class Tab4 extends Component {
                     style={styles.ventanaPerfilImagen}
                     />
                     <View style={styles.ventanaPerfilinformacion}>
-                        <Text style={styles.campo}>Nombre: <Text style={styles.campoText}>Pablo Alejandro</Text></Text>
-                        <Text style={styles.campo}>Edad: <Text style={styles.campoText}>18</Text></Text>
-                        <Text style={styles.campo}>Carrera: <Text style={styles.campoText}>Ingeniería Informática</Text></Text>
+                        <Text style={styles.campoText}>Pablo Alejandro</Text>
+                        <Text style={styles.campoText}>18</Text>
+                        <Text style={{fontSize: moderateScale(15), color: 'red', textAlign: "center"}}>Ingeniería Informática</Text>
                     </View>
                     <FlatList
+                    style={{marginHorizontal: horizontalScale(20)}}
                     data={imagenes}
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
@@ -107,15 +109,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     ventanaPerfilinformacion: {
-        gap: 20,
+        gap: 10,
         marginVertical: 20,
         marginHorizontal: 80,
     },
-    campo: {
-        color: '#3069be',
-    },
     campoText: {
+        fontSize: moderateScale(15),
         color: 'black',
+        textAlign: "center"
     },
     titulo: {
         fontSize: 15,
@@ -126,8 +127,8 @@ const styles = StyleSheet.create({
     imagenes: {
         width: 120,
         height: 120,
-        borderWidth: 1,
-        borderColor: "#3069be",
+        borderRadius: 10,
+        marginRight: horizontalScale(10)
     },
     app: {
         marginLeft: 30,
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     
         // my visual styles; not important for grid
         padding: 10,
-        backgroundColor: "#3069be",
+        backgroundColor: "#102A68",
         borderWidth: 1.5,
         borderColor: "white",
         borderRadius: 5,
@@ -169,7 +170,7 @@ const styles = StyleSheet.create({
     
         // my visual styles; not important for grid
         padding: 10,
-        backgroundColor: "#3069be",
+        backgroundColor: "#102A68",
         borderWidth: 1.5,
         borderColor: "white",
         borderRadius: 5,

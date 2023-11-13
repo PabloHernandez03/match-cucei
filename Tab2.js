@@ -41,9 +41,9 @@ export default class Tab2 extends Component {
                         <TouchableOpacity style={styles.botonPerfil} onPress={detallesPendiente}>
                             <Image style={styles.perfilImage} source={{uri: "https://i.pravatar.cc/300"}}/>
                             <View style={{marginTop:verticalScale(-110),marginLeft:horizontalScale(120)}}>
-                                <Text style={{color:"White",fontSize:moderateScale(20)}}>Dario Carrasco</Text>
+                                <Text style={{color:"white",fontSize:moderateScale(20)}}>Dario Carrasco</Text>
                                 <Text style={{color:"red"}}>Ingenieria Industrial</Text>
-                                <Text style={{color:"White"}}>20 Años</Text>
+                                <Text style={{color:"white"}}>20 Años</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -79,9 +79,9 @@ export default class Tab2 extends Component {
                                         <Image style={styles.perfilImageDetalles} source={{uri: "https://i.pravatar.cc/301"}}/>
 
                                         <View style={{alignItems:"center",}}>
-                                            <Text style={{color:"White",fontSize:moderateScale(40)}}>Angelina Acebes</Text>
+                                            <Text style={{color:"white",fontSize:moderateScale(40)}}>Angelina Acebes</Text>
                                             <Text style={{color:"red"}}>Ingenieria en Computacion</Text>
-                                            <Text style={{color:"White"}}>20 Años</Text>
+                                            <Text style={{color:"white"}}>20 Años</Text>
                                         </View>
 
                                         <View style={{marginTop:verticalScale(50), width:horizontalScale(310), marginLeft:horizontalScale(18)}}>
@@ -111,8 +111,8 @@ export default class Tab2 extends Component {
                                             </View>
                                         </View>
                                         <View style={{marginTop:verticalScale(100)}}>
-                                            <TouchableOpacity style={styles.aceptar}><Text style={{color:"White",fontSize:moderateScale(20)}}>Aceptar</Text></TouchableOpacity>
-                                            <TouchableOpacity style={styles.rechazar}><Text style={{color:"White",fontSize:moderateScale(20)}}>Rechazar</Text></TouchableOpacity>
+                                            <TouchableOpacity style={styles.aceptar}><Text style={{color:"white",fontSize:moderateScale(20)}}>Aceptar</Text></TouchableOpacity>
+                                            <TouchableOpacity style={styles.rechazar}><Text style={{color:"white",fontSize:moderateScale(20)}}>Rechazar</Text></TouchableOpacity>
                                         </View>
                                     </View>
                                 </ScrollView>
@@ -136,9 +136,9 @@ export default class Tab2 extends Component {
                                         <Image style={styles.perfilImageDetalles} source={{uri: "https://i.pravatar.cc/300"}}/>
 
                                         <View style={{alignItems:"center",}}>
-                                            <Text style={{color:"White",fontSize:moderateScale(40)}}>Dario Carrasco</Text>
+                                            <Text style={{color:"white",fontSize:moderateScale(40)}}>Dario Carrasco</Text>
                                             <Text style={{color:"red"}}>Ingenieria Industrial</Text>
-                                            <Text style={{color:"White"}}>20 Años</Text>y
+                                            <Text style={{color:"white"}}>20 Años</Text>
                                         </View>
 
                                         <View style={{marginTop:verticalScale(50), width:horizontalScale(310), marginLeft:horizontalScale(18)}}>
@@ -156,7 +156,7 @@ export default class Tab2 extends Component {
                                         </View>
 
                                         <View style={{alignItems:"center",}}>
-                                            <Text style={{color:"White",fontSize:moderateScale(30)}}>Preferencias</Text>
+                                            <Text style={{color:"white",fontSize:moderateScale(30)}}>Preferencias</Text>
                                             <View style={styles.app}>
                                                 {preferencias.map((item) => {
                                                     return (
