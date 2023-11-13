@@ -50,7 +50,7 @@ export default class Tab4 extends Component {
                     />
                     <View style={styles.ventanaPerfilinformacion}>
                         <Text style={styles.campoText}>Pablo Alejandro</Text>
-                        <Text style={styles.campoText}>18</Text>
+                        <Text style={styles.campoText}>18 años</Text>
                         <Text style={{fontSize: moderateScale(15), color: 'red', textAlign: "center"}}>Ingeniería Informática</Text>
                     </View>
                     <FlatList
