@@ -45,12 +45,12 @@ export default class Inscripcion extends Component {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 //Aquí no se como hacer que la función se haga true +++++++++++++++++++++++++++++++++++++++
-                if(xhttp.responseText > 3){
+                // if(xhttp.responseText > 3){
                     //Para mostrar un mensaje en la app
                     _this.setState({alertaRegistro: true});
-                }else{
-                    Alert.alert("Error X~X");
-                } 
+                // }else{
+                //     Alert.alert("Error X~X");
+                // } 
             }
         };
         
@@ -74,7 +74,6 @@ export default class Inscripcion extends Component {
             xhttp.send();
             _this.setState({Id_perfil: xhttp.responseText});
         }
-        
     }
 
     const ir_a_menu = ()=>{
